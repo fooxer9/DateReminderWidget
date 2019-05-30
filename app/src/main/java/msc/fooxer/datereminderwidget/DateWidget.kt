@@ -70,6 +70,10 @@ fun updateWidget(context: Context?, appWidgetManager: AppWidgetManager?, sp: Sha
     if (appWidgetManager != null) {
         appWidgetManager.updateAppWidget(widgetId, widgetView)
     }
+    if (difference == 1.toLong()) {
+        
+    }
+
 
 }
 fun callActivity(context:Context?, widgetID: Int) : PendingIntent{

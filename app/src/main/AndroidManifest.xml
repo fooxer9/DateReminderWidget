@@ -32,6 +32,10 @@
                     android:resource="@xml/widget_metadata">
             </meta-data>
         </receiver>
+        <receiver
+                android:name=".Reciever"
+        >
+        </receiver>
     </application>
 
 </manifest>
