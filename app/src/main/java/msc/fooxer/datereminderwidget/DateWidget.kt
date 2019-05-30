@@ -7,6 +7,7 @@ import android.app.PendingIntent
 import android.appwidget.AppWidgetManager
 import android.appwidget.AppWidgetProvider
 import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Build
 import android.provider.Settings.Global.getString
@@ -23,6 +24,7 @@ class DateWidget : AppWidgetProvider() {
 
     override fun onEnabled(context: Context?) {
         super.onEnabled(context)
+
 
     }
 
@@ -53,6 +55,8 @@ class DateWidget : AppWidgetProvider() {
 
     }
 
+
+
 fun updateWidget(context: Context?, appWidgetManager: AppWidgetManager?, sp: SharedPreferences, widgetId: Int) {
     val dateLong = sp.getLong("SAVED_DATE$widgetId", Date(Calendar.YEAR,Calendar.MONTH,Calendar.DAY_OF_MONTH+1).time)
     newDate.time = dateLong
@@ -62,11 +66,20 @@ fun updateWidget(context: Context?, appWidgetManager: AppWidgetManager?, sp: Sha
     widgetView.setTextViewText(R.id.newDateTextView, "Ваша дата: ${dateFormat.format(newDate)}")
     widgetView.setTextViewText(R.id.daystextView, daysDiff.toString())
     widgetView.setTextViewText(R.id.dateTextView, "Сегодня: ${dateFormat.format(Date())}")
-   // widgetView.setOnClickPendingIntent(R.id.setDateButton,)
+    widgetView.setOnClickPendingIntent(R.id.setDateButton, callActivity(context,widgetId))
     if (appWidgetManager != null) {
         appWidgetManager.updateAppWidget(widgetId, widgetView)
     }
 
-
+}
+fun callActivity(context:Context?, widgetID: Int) : PendingIntent{
+    val configIntent = Intent(context, ConfigActivity::class.java)
+    configIntent.action = AppWidgetManager.ACTION_APPWIDGET_CONFIGURE
+    configIntent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, widgetID)
+    val pIntent = PendingIntent.getActivity(
+        context, widgetID,
+        configIntent, 0
+    )
+    return pIntent
 }
 

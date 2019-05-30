@@ -1,9 +1,6 @@
 package msc.fooxer.datereminderwidget
 
-import android.app.Activity
-import android.app.NotificationChannel
-import android.app.NotificationManager
-import android.app.PendingIntent
+import android.app.*
 import android.appwidget.AppWidgetManager
 import android.content.Context
 import android.content.Intent
@@ -74,7 +71,7 @@ class ConfigActivity : AppCompatActivity() {
     fun saveDate () {
         val sPref = getSharedPreferences(WIDGET_PREF,Context.MODE_PRIVATE)
         val editor = sPref.edit()
-        editor.putLong("SAVED_DATE$widgetId",newDate.time) 
+        editor.putLong("SAVED_DATE$widgetId",newDate.time)
         editor.apply()
         val appWidgetManager = AppWidgetManager.getInstance(this)
         updateWidget(this, appWidgetManager, sPref, widgetId)
@@ -102,6 +99,7 @@ class ConfigActivity : AppCompatActivity() {
             // Register the channel with the system
             val notificationManager: NotificationManager = getSystemService(Context.NOTIFICATION_SERVICE)
                     as NotificationManager
+            val alarmManager: AlarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
             notificationManager.createNotificationChannel(channel)
            val builder =  NotificationCompat.Builder(context, CHANNEL_ID)
             .setSmallIcon(R.drawable.notification_tile_bg)
