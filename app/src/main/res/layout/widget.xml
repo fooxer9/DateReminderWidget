@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+
+        android:layout_height="wrap_content"
+        android:orientation="vertical" android:layout_marginTop="50dp"
+        android:background="#FFFFFF">
+    <TextView
+            android:text="Сегодня"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/dateTextView" android:textSize="18sp"
+            android:textAlignment="center" android:layout_marginTop="10dp" android:textColor="@color/textColor"/>
+    <TextView
+            android:text="Ваша дата:"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/newDateTextView"
+            android:textSize="18sp" android:textAlignment="center" android:layout_marginTop="10dp"
+            android:textColor="@color/textColor"/>
+    <TextView
+            android:text="Дней до вашей даты:"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/diffTextView"
+            android:textAlignment="center" android:textSize="14sp" android:layout_marginTop="10dp"
+            android:textColor="@color/textColor"/>
+    <TextView
+            android:text="N дней"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/daystextView"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:textAlignment="center" android:layout_marginTop="10dp" android:textColor="@color/textColor"/>
+    <Button
+            android:text="Выбрать дату"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+
+            android:background="@color/colorAccent"
+            android:id="@+id/setDateButton"
+            android:layout_marginTop="20dp" android:layout_marginLeft="50dp" android:layout_marginRight="50dp"
+            style="@style/Widget.AppCompat.Button.Colored" android:layout_marginBottom="20dp"/>
+</LinearLayout>
